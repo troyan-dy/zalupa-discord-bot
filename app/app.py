@@ -1,20 +1,14 @@
-from discord.ext import commands
-
-bot = commands.Bot(command_prefix="!")
-
-
-@bot.event
-async def on_ready():
-    print("Logged in as")
-    print(bot.user.name)
-    print(bot.user.id)
-    print("------")
+from app.cogs.petuh_dialog import PetushDialog
+from app.main_bot import MainBot
 
 
-@bot.command("петух", pass_context=True)
-async def add(ctx):
-    print(ctx.__dir__)
-    await bot.say("Игорь петух")
+def main():
+    bot = MainBot()
+
+    bot.add_cog(PetushDialog(bot))
+
+    bot.run("OTI3OTY3NTU2NzM0NzAxNjI5.YdR7Ig.vmGqQ9fiIhLxiayZ9ete9hEeWvE")
 
 
-bot.run("token")
+if __name__ == "__main__":
+    main()
