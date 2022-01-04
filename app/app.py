@@ -1,3 +1,5 @@
+import sentry_sdk
+
 from app.cogs.petuh_dialog import PetushDialog
 from app.main_bot import MainBot
 from app.settings import Settings
@@ -5,6 +7,8 @@ from app.settings import Settings
 
 def main():
     settings = Settings()
+    if settings.env == "prod":
+        sentry_sdk.init(settings.sentry_dsn)
     bot = MainBot()
 
     bot.add_cog(PetushDialog(bot))
