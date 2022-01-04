@@ -32,5 +32,5 @@ class PetushDialog(BaseCog):
         self.logger.info("process ping_say")
 
     @command("error")
-    async def send_error(self, ctx: Context):
-        raise Exception("some error")
+    async def some_error(self, ctx: Context):
+        raise Exception("test error")

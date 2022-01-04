@@ -7,9 +7,11 @@ from app.settings import Settings
 
 def main():
     settings = Settings()
-    if settings.env == "prod":
-        sentry_sdk.init(dsn=settings.sentry_dsn)
     bot = MainBot()
+    print(settings.env)
+    if settings.env == "prod":
+        bot.logger.info("include sentry_sdk")
+        sentry_sdk.init(dsn=settings.sentry_dsn)
     bot.add_cog(PetushDialog(bot))
     bot.logger.info("Подготовка подготовлена")
 

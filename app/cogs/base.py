@@ -8,3 +8,6 @@ class BaseCog(Cog, LoggerMixin):
 
     def author_id(self, ctx: Context) -> int:
         return ctx.message.author.id
+
+    async def cog_command_error(self, ctx, error):
+        raise Exception from error
