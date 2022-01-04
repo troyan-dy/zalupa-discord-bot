@@ -1,9 +1,29 @@
-from discord.ext.commands import Cog, Context, command
+import asyncio
+import random
+
+from app.cogs.base import BaseCog
+from discord.ext.commands import Bot, Context, command
+from discord.ext.tasks import loop
 
 
-class PetushDialog(Cog):
-    @command("петух", pass_context=True)
-    async def petuh(self, ctx: Context, val=None):
-        await ctx.send("Каво!!! а может быть ты петух!!! м!!?!?!?")
-        if val:
-            await ctx.send(f"Хотя действительно, {val} - петух!!")
+class PetushDialog(BaseCog):
+    def __init__(self, bot: Bot):
+        super().__init__(bot)
+        self.ping_say.start()
+
+    @command("петух")
+    async def petuh(self, ctx: Context):
+        await ctx.send(f"Каво!!! а может быть ты(<@{self.author_id(ctx)}>) петух!!! м!!?!?!?")
+
+    @command("пенис")
+    async def penis_len(self, ctx: Context):
+        await ctx.send(f"У <@{self.author_id(ctx)}> гиганская пенисина, целых {random.randint(3, 14)}см")
+
+    @loop(hours=2)
+    async def ping_say(self):
+        text_channel_list = []
+        for guild in self.bot.guilds:
+            for channel in guild.text_channels:
+                text_channel_list.append(channel)
+        if text_channel_list:
+            await asyncio.gather(*[tc.send("как покакали ребятки?") for tc in text_channel_list])
