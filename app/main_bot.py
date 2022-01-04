@@ -6,6 +6,8 @@ import aiohttp
 import certifi
 from discord.ext.commands import Bot
 
+from app.health_check import health_check as health_check
+
 
 class MainBot(Bot):
     def __init__(self, *args, **kwargs):
@@ -25,3 +27,4 @@ class MainBot(Bot):
         print(self.user.name)
         print(self.user.id)
         print("------")
+        asyncio.create_task(health_check)
