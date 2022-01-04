@@ -102,6 +102,17 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "discord-sentry-reporting"
+version = "2.0.4"
+description = "A small compatibility library that provides functionality to report errors from discord.py to Sentry."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+sentry-sdk = "*"
+
+[[package]]
 name = "discord.py"
 version = "1.7.3"
 description = "A Python wrapper for the Discord API"
@@ -358,7 +369,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.9.9"
-content-hash = "8d69961926c69a5f6024db5c1c97ad22466d98b118627160558fb077aadfd95b"
+content-hash = "dc23360a020e0521b7e08360a3be29949ade8eebadc99557c32189c546b212cd"
 
 [metadata.files]
 aiohttp = [
@@ -430,6 +441,10 @@ click = [
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
+]
+discord-sentry-reporting = [
+    {file = "discord-sentry-reporting-2.0.4.tar.gz", hash = "sha256:788d4bb3e754595768577a6011695f22096894b0f34554c03c3329abfe97e85f"},
+    {file = "discord_sentry_reporting-2.0.4-py3-none-any.whl", hash = "sha256:6300aaf092b2d1ca3823974e98f85e0adce97d05620ea0d6261b3554a1d934d4"},
 ]
 "discord.py" = [
     {file = "discord.py-1.7.3-py3-none-any.whl", hash = "sha256:c6f64db136de0e18e090f6752ea68bdd4ab0a61b82dfe7acecefa22d6477bb0c"},

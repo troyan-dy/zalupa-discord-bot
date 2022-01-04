@@ -4,6 +4,7 @@ attrs==21.4.0; python_version >= "3.6" and python_full_version >= "3.5.3"
 certifi==2021.10.8
 chardet==4.0.0; python_version >= "3.6" and python_full_version >= "3.5.3"
 colorama==0.4.4; python_version >= "3.5" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.5" and python_full_version >= "3.5.0"
+discord-sentry-reporting==2.0.4
 discord.py==1.7.3; python_full_version >= "3.5.3"
 idna==2.10; python_version >= "3.6" and python_full_version >= "3.5.3"
 loguru==0.5.3; python_version >= "3.5"

@@ -1,4 +1,4 @@
-import sentry_sdk
+from discord_sentry_reporting import use_sentry
 
 from app.cogs.petuh_dialog import PetushDialog
 from app.main_bot import MainBot
@@ -11,7 +11,7 @@ def main():
     print(settings.env)
     if settings.env == "prod":
         bot.logger.info("include sentry_sdk")
-        sentry_sdk.init(dsn=settings.sentry_dsn)
+        use_sentry(bot, dsn=settings.sentry_dsn)
     bot.add_cog(PetushDialog(bot))
     bot.logger.info("Подготовка подготовлена")
 
