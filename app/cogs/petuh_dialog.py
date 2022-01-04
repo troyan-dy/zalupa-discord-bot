@@ -21,8 +21,9 @@ class PetushDialog(BaseCog):
         await ctx.send(f"У <@{self.author_id(ctx)}> гиганская пенисина, целых {random.randint(3, 14)}см")
         self.logger.info("process penis_len")
 
-    @loop(seconds=20)
+    @loop(hours=3)
     async def ping_say(self):
+        await self.bot.wait_until_ready()
         text_channel_list = []
         for guild in self.bot.guilds:
             for channel in guild.text_channels:
