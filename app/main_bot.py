@@ -6,10 +6,10 @@ import aiohttp
 import certifi
 from discord.ext.commands import Bot
 
-from app.health_check import health_check as health_check
+from app.logger import LoggerMixin
 
 
-class MainBot(Bot):
+class MainBot(Bot, LoggerMixin):
     def __init__(self, *args, **kwargs):
         super().__init__(
             connector=aiohttp.TCPConnector(
@@ -27,4 +27,3 @@ class MainBot(Bot):
         print(self.user.name)
         print(self.user.id)
         print("------")
-        asyncio.create_task(health_check)
