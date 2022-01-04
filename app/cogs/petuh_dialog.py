@@ -9,7 +9,7 @@ from discord.ext.tasks import loop
 class PetushDialog(BaseCog):
     def __init__(self, bot: Bot):
         super().__init__(bot)
-        # self.ping_say.start()
+        self.ping_say.start()
 
     @command("петух")
     async def petuh(self, ctx: Context):
@@ -21,7 +21,7 @@ class PetushDialog(BaseCog):
         await ctx.send(f"У <@{self.author_id(ctx)}> гиганская пенисина, целых {random.randint(3, 14)}см")
         self.logger.info("process penis_len")
 
-    @loop(hours=2)
+    @loop(seconds=20)
     async def ping_say(self):
         text_channel_list = []
         for guild in self.bot.guilds:
