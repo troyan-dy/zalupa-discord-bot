@@ -1,10 +1,8 @@
-import asyncio
-import random
 import ssl
 
 import aiohttp
 import certifi
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot, Context
 
 from app.logger import LoggerMixin
 
@@ -27,3 +25,6 @@ class MainBot(Bot, LoggerMixin):
         self.logger.info(self.user.name)
         self.logger.info(self.user.id)
         self.logger.info("------")
+
+    async def on_command_error(self, ctx: Context, error: Exception):
+        raise Exception from error
