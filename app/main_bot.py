@@ -23,7 +23,7 @@ class MainBot(Bot, LoggerMixin):
         )
 
     async def on_ready(self):
-        print("Logged in as")
-        print(self.user.name)
-        print(self.user.id)
-        print("------")
+        self.logger.info("Logged in as")
+        self.logger.info(self.user.name)
+        self.logger.info(self.user.id)
+        self.logger.info("------")

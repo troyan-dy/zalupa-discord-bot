@@ -1,5 +1,4 @@
 from app.cogs.petuh_dialog import PetushDialog
-from app.health_check import health_check as health_check
 from app.main_bot import MainBot
 from app.settings import Settings
 
@@ -9,6 +8,7 @@ def main():
     bot = MainBot()
 
     bot.add_cog(PetushDialog(bot))
+    bot.logger.info("Подготовка подготовлена")
 
     bot.run(settings.bot_token)
 
