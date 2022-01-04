@@ -1,5 +1,8 @@
-from pydantic import BaseSetting
+from pydantic import BaseSettings
 
 
-class Settings(BaseSetting):
+class Settings(BaseSettings):
     bot_token: str
+
+    class Config:
+        env_file = "local.env"
