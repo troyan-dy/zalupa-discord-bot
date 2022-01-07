@@ -9,7 +9,7 @@ from discord.ext.tasks import loop
 class PetushDialog(BaseCog):
     def __init__(self, bot: Bot):
         super().__init__(bot)
-        self.ping_say.start()
+        # self.ping_say.start()
 
     @command("петух")
     async def petuh(self, ctx: Context):
