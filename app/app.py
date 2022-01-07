@@ -1,3 +1,4 @@
+import uvloop
 from discord_sentry_reporting import use_sentry
 
 from app.cogs.petuh_dialog import PetushDialog
@@ -6,6 +7,7 @@ from app.settings import Settings
 
 
 def main():
+    uvloop.install()
     settings = Settings()
     bot = MainBot()
     print(settings.env)
