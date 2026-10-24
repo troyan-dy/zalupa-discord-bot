@@ -1,24 +1,22 @@
 import uvloop
-from discord_sentry_reporting import use_sentry
 
 from app.cogs.petuh_dialog import PetushDialog
 from app.main_bot import MainBot
 from app.settings import Settings
 
 
-def main():
-    uvloop.install()
+async def main():
     settings = Settings()
-    bot = MainBot()
-    print(settings.env)
-    if settings.env == "prod":
-        bot.logger.info("include sentry_sdk")
-        use_sentry(bot, dsn=settings.sentry_dsn)
-    bot.add_cog(PetushDialog(bot))
-    bot.logger.info("Подготовка подготовлена")
+    async with MainBot() as bot:
+        print(settings.env)
+        if settings.env == "prod":
+            bot.logger.info("include sentry_sdk")
+            bot.use_sentry(dsn=str(settings.sentry_dsn))
+        await bot.add_cog(PetushDialog(bot))
+        bot.logger.info("Подготовка подготовлена")
 
-    bot.run(settings.bot_token)
+        await bot.start(settings.bot_token)
 
 
 if __name__ == "__main__":
-    main()
+    uvloop.run(main())

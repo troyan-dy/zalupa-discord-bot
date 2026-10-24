@@ -1,10 +1,11 @@
 import asyncio
 import random
 
-from app.cogs.base import BaseCog
-from app.utils import command
 from discord.ext.commands import Bot, Context
 from discord.ext.tasks import loop
+
+from app.cogs.base import BaseCog
+from app.utils import command
 
 
 class PetushDialog(BaseCog):
