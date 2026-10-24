@@ -1,5 +1,6 @@
-from app.logger import LoggerMixin
 from discord.ext.commands import Bot, Cog, Context
+
+from app.logger import LoggerMixin
 
 
 class BaseCog(Cog, LoggerMixin):

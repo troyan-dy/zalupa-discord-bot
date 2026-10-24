@@ -1,0 +1,29 @@
+name: Lint
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version-file: .python-version
+      - name: Install Poetry
+        run: pipx install poetry
+      - name: Install dependencies
+        run: poetry sync --no-interaction
+      - name: Ruff
+        run: |
+          poetry run ruff check app
+          poetry run ruff format --check app
+      - name: WPS
+        run: poetry run flake8 app --select=WPS
+      - name: Mypy
+        run: poetry run mypy app
+      - name: Import check
+        run: poetry run python -c "import app.app"
