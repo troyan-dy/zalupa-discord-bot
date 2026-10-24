@@ -7,6 +7,7 @@ lint:
 	poetry run ruff check $(SERVICE_NAME)/
 	poetry run ruff format --check $(SERVICE_NAME)/
 	poetry run mypy $(SERVICE_NAME)/
+	poetry run flake8 $(SERVICE_NAME)/ --select=WPS
 
 format:
 	@poetry run ruff check --fix $(SERVICE_NAME)/

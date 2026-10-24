@@ -21,6 +21,8 @@ jobs:
         run: |
           poetry run ruff check app
           poetry run ruff format --check app
+      - name: WPS
+        run: poetry run flake8 app --select=WPS
       - name: Mypy
         run: poetry run mypy app
       - name: Import check
