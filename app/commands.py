@@ -22,7 +22,8 @@ def logged(key, logger=None):
     try:
         yield
     finally:
-        logger.info(f"'{key}' finished, spend: {datetime.now(UTC) - start}")
+        spent = datetime.now(UTC) - start
+        logger.info(f"'{key}' finished, spend: {spent}")
 
 
 class Command(_Command, LoggerMixin):
@@ -32,8 +33,8 @@ class Command(_Command, LoggerMixin):
         return await super().call_before_hooks(ctx)
 
     async def call_after_hooks(self, ctx):
-        stop = datetime.now(UTC)
-        self.logger.info(f"'{self.name}' finished, spend: {stop - start_time.get()}")
+        spent = datetime.now(UTC) - start_time.get()
+        self.logger.info(f"'{self.name}' finished, spend: {spent}")
         return await super().call_after_hooks(ctx)
 
 

@@ -8,7 +8,7 @@ from app.settings import Settings
 async def main():
     settings = Settings()
     async with MainBot() as bot:
-        print(settings.env)
+        bot.logger.info(f"env: {settings.env}")
         if settings.env == "prod":
             bot.logger.info("include sentry_sdk")
             bot.use_sentry(dsn=str(settings.sentry_dsn))

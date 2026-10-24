@@ -1,26 +1,28 @@
 import asyncio
 import random
 
-from discord.ext.commands import Bot, Context
+from discord.ext.commands import Context
 from discord.ext.tasks import loop
 
 from app.cogs.base import BaseCog
-from app.utils import command
+from app.commands import command
+
+MIN_PENIS_LEN = 3
+MAX_PENIS_LEN = 14
 
 
 class PetushDialog(BaseCog):
-    def __init__(self, bot: Bot):
-        super().__init__(bot)
-        # self.ping_say.start()
-
     @command("петух")
     async def petuh(self, ctx: Context):
         await ctx.send(f"Каво!!! а может быть ты(<@{self.author_id(ctx)}>) петух!!! м!!?!?!?")
 
     @command("пенис")
     async def penis_len(self, ctx: Context):
-        await ctx.send(f"У <@{self.author_id(ctx)}> гиганская пенисина, целых {random.randint(3, 14)}см")
+        author_id = self.author_id(ctx)
+        length = random.randint(MIN_PENIS_LEN, MAX_PENIS_LEN)
+        await ctx.send(f"У <@{author_id}> гиганская пенисина, целых {length}см")
 
+    # Отключено: для включения вызвать self.ping_say.start() при инициализации cog
     @loop(hours=3)
     async def ping_say(self):
         await self.bot.wait_until_ready()
